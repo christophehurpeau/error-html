@@ -35,7 +35,7 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "eshighlight-fb": "^1.0.0",
-    "flow-runtime": "^0.8.0",
+    "flow-runtime": "^0.9.1",
     "stack-trace": "^0.0.9"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-preset-jsdoc": "^0.4.0",
     "babel-preset-latest-node": "^0.1.0",
-    "babel-preset-modern-browsers": "^8.1.1",
+    "babel-preset-modern-browsers": "^9.0.2",
     "eslint": "^3.17.0",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-config-pob": "^11.1.0",
