@@ -1,5 +1,7 @@
 # error-html [![NPM version][npm-image]][npm-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/christophehurpeau/error-html.svg)](https://greenkeeper.io/)
+
 render error stack in html
 
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
