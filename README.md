@@ -11,6 +11,10 @@ render error stack in html
 npm install --save error-html
 ```
 
+## Related
+
+- [react-error-html](https://npmjs.org/package/react-error-html)
+
 ## Usage
 
 ```js
