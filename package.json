@@ -1,6 +1,6 @@
 {
   "name": "error-html",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "render error stack in html",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
