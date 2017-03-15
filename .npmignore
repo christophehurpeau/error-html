@@ -5,6 +5,7 @@
 /coverage
 /build
 /test
+/readme
 /.pob.json
 circle.yml
 .codeclimate.yml
