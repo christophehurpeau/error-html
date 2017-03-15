@@ -1,12 +1,11 @@
 import { readFileSync } from 'fs';
-import stackTrace from 'stack-trace';
+import errorStackParser from 'error-stack-parser';
 
 export default (err) => {
-  let stack = stackTrace.parse(err);
-
+  const frames = errorStackParser.parse(err);
   const files = new Map();
 
-  return stack.map((line) => {
+  return frames.map((line) => {
     const fileName = line.fileName;
     let file;
 

@@ -1,12 +1,11 @@
 
-import stackTrace from 'stack-trace';
+import errorStackParser from 'error-stack-parser';
 
 export default (function parseErrorStack(err) {
-  let stack = stackTrace.parse(err);
-
+  const frames = errorStackParser.parse(err);
   const files = new Map();
 
-  return stack.map(function (line) {
+  return frames.map(function (line) {
     const fileName = line.fileName;
     let file;
 

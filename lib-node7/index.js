@@ -88,7 +88,8 @@ let HtmlRenderer = class {
    * @ignore
    */
   renderStack(error) {
-    let stackTrace = (0, _parseErrorStack2.default)(error);
+    let frames = (0, _parseErrorStack2.default)(error);
+    console.log(frames);
 
     let str = `<style>.string{ color: #EC7600; }
 .keyword, .null{ font-weight: bold; color: #93C763; }
@@ -103,48 +104,52 @@ let HtmlRenderer = class {
 .azerty7{ color: #E0E2E4; }
 .azerty9{ color: purple; }
 </style>`;
-    stackTrace.forEach((item, i) => {
-      if (item.file && item.file.contents) {
+    frames.forEach((frame, i) => {
+      if (frame.file && frame.file.contents) {
         str += '<span><a href="javascript:;" style="color:#CC7A00;text-decoration:none;outline:none;" '
         // eslint-disable-next-line
         + `onclick="var el=this.parentNode.nextElementSibling; el.style.display=el.style.display=='none'?'block':'none';">`;
       }
 
       str += `#${i} `;
-      if (!item.native) {
-        if (item.fileName && item.fileName.startsWith('/')) {
-          str += this.openLocalFile(item.fileName, item.lineNumber, item.columnNumber);
+      if (!frame.isNative && !frame.isEval) {
+        if (frame.fileName && frame.fileName.startsWith('/')) {
+          str += this.openLocalFile(frame.fileName, frame.lineNumber, frame.columnNumber);
         }
 
-        str += this.replaceAppInFilePath(item.fileName);
-        if (item.lineNumber !== null || item.columnNumber !== null) {
-          str += `:${item.lineNumber}:${item.columnNumber}`;
+        str += this.replaceAppInFilePath(frame.fileName);
+        if (frame.lineNumber !== null || frame.columnNumber !== null) {
+          str += `:${frame.lineNumber}:${frame.columnNumber}`;
         }
 
-        if (item.fileName && item.fileName.startsWith('/')) {
+        if (frame.fileName && frame.fileName.startsWith('/')) {
           str += '</a>';
         }
 
         str += ' ';
       }
 
-      if (item.functionName) {
-        str += item.functionName;
-      } else if (item.typeName) {
-        str += `${item.typeName}.${item.methodName || '<anonymous>'}`;
+      if (frame.functionName) {
+        str += frame.functionName;
+      } else if (frame.typeName) {
+        str += `${frame.typeName}.${frame.methodName || '<anonymous>'}`;
       }
 
-      if (item.native) {
+      if (frame.isNative) {
         str += ' [native]';
       }
 
-      if (item.file && item.file.contents) {
+      if (frame.isEval) {
+        str += ' [eval]';
+      }
+
+      if (frame.file && frame.file.contents) {
         str += '</a></span>';
         str += '<div style="display:none">';
 
         str += '<div style="margin-top: 5px">';
         str += '<b>File content :</b><br />';
-        str += this.highlightLine(item.file.contents, item.lineNumber, item.columnNumber);
+        str += this.highlightLine(frame.file.contents, frame.lineNumber, frame.columnNumber);
         str += '</div>';
 
         str += '</div>';

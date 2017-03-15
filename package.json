@@ -33,10 +33,10 @@
     "watch": "pob-watch"
   },
   "dependencies": {
+    "error-stack-parser": "^2.0.0",
     "escape-html": "^1.0.3",
     "eshighlight-fb": "^1.0.0",
-    "flow-runtime": "^0.8.0",
-    "stack-trace": "^0.0.9"
+    "flow-runtime": "^0.9.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.0.0",
@@ -44,7 +44,7 @@
     "babel-preset-env": "^1.2.1",
     "babel-preset-jsdoc": "^0.4.0",
     "babel-preset-latest-node": "^0.1.0",
-    "babel-preset-modern-browsers": "^8.1.1",
+    "babel-preset-modern-browsers": "^9.0.2",
     "eslint": "^3.17.0",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-config-pob": "^11.1.0",
@@ -54,7 +54,7 @@
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
     "minami": "^1.1.1",
-    "pob-babel": "^17.0.1",
+    "pob-babel": "^17.1.1",
     "pob-release": "^3.1.0"
   }
 }

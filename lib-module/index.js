@@ -94,51 +94,56 @@ var HtmlRenderer = function () {
     value: function renderStack(error) {
       var _this = this;
 
-      var stackTrace = parseErrorStack(error);
+      var frames = parseErrorStack(error);
+      console.log(frames);
 
       var str = '<style>.string{ color: #EC7600; }\n.keyword, .null{ font-weight: bold; color: #93C763; }\n.numeric{ color: #FACD22; }\n.line-comment{ color: #66747B; }\n.identifier{ }\n.control-flow{ color: #93C763; }\n.azerty1{ color: #66747B; }\n.azerty2{ color: #678CB1; }\n.azerty5{ color: #F1F2F3; }\n.azerty6{ color: #8AC763; }\n.azerty7{ color: #E0E2E4; }\n.azerty9{ color: purple; }\n</style>';
-      stackTrace.forEach(function (item, i) {
-        if (item.file && item.file.contents) {
+      frames.forEach(function (frame, i) {
+        if (frame.file && frame.file.contents) {
           str += '<span><a href="javascript:;" style="color:#CC7A00;text-decoration:none;outline:none;" '
           // eslint-disable-next-line
           + 'onclick="var el=this.parentNode.nextElementSibling; el.style.display=el.style.display==\'none\'?\'block\':\'none\';">';
         }
 
         str += '#' + i + ' ';
-        if (!item.native) {
-          if (item.fileName && item.fileName.startsWith('/')) {
-            str += _this.openLocalFile(item.fileName, item.lineNumber, item.columnNumber);
+        if (!frame.isNative && !frame.isEval) {
+          if (frame.fileName && frame.fileName.startsWith('/')) {
+            str += _this.openLocalFile(frame.fileName, frame.lineNumber, frame.columnNumber);
           }
 
-          str += _this.replaceAppInFilePath(item.fileName);
-          if (item.lineNumber !== null || item.columnNumber !== null) {
-            str += ':' + item.lineNumber + ':' + item.columnNumber;
+          str += _this.replaceAppInFilePath(frame.fileName);
+          if (frame.lineNumber !== null || frame.columnNumber !== null) {
+            str += ':' + frame.lineNumber + ':' + frame.columnNumber;
           }
 
-          if (item.fileName && item.fileName.startsWith('/')) {
+          if (frame.fileName && frame.fileName.startsWith('/')) {
             str += '</a>';
           }
 
           str += ' ';
         }
 
-        if (item.functionName) {
-          str += item.functionName;
-        } else if (item.typeName) {
-          str += item.typeName + '.' + (item.methodName || '<anonymous>');
+        if (frame.functionName) {
+          str += frame.functionName;
+        } else if (frame.typeName) {
+          str += frame.typeName + '.' + (frame.methodName || '<anonymous>');
         }
 
-        if (item.native) {
+        if (frame.isNative) {
           str += ' [native]';
         }
 
-        if (item.file && item.file.contents) {
+        if (frame.isEval) {
+          str += ' [eval]';
+        }
+
+        if (frame.file && frame.file.contents) {
           str += '</a></span>';
           str += '<div style="display:none">';
 
           str += '<div style="margin-top: 5px">';
           str += '<b>File content :</b><br />';
-          str += _this.highlightLine(item.file.contents, item.lineNumber, item.columnNumber);
+          str += _this.highlightLine(frame.file.contents, frame.lineNumber, frame.columnNumber);
           str += '</div>';
 
           str += '</div>';

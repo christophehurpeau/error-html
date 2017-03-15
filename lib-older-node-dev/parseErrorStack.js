@@ -6,18 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _fs = require('fs');
 
-var _stackTrace = require('stack-trace');
+var _errorStackParser = require('error-stack-parser');
 
-var _stackTrace2 = _interopRequireDefault(_stackTrace);
+var _errorStackParser2 = _interopRequireDefault(_errorStackParser);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function parseErrorStack(err) {
-  var stack = _stackTrace2.default.parse(err);
-
+  var frames = _errorStackParser2.default.parse(err);
   var files = new Map();
 
-  return stack.map(function (line) {
+  return frames.map(function (line) {
     var fileName = line.fileName;
     var file = void 0;
 
