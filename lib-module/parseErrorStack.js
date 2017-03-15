@@ -1,24 +1,58 @@
 
 import errorStackParser from 'error-stack-parser';
+import { findSourceMap } from './source-map-support';
 
 export default (function (err) {
   var frames = errorStackParser.parse(err);
-  var files = new Map();
+  var cache = new Map();
 
-  return frames.map(function (line) {
-    var fileName = line.fileName;
+  return frames.map(function (frame) {
+    if (frame.isNative || frame.isEval) return frame;
+
+    frame.fileName;
+
     var file = void 0;
 
-    if (fileName && fileName.startsWith('/')) {
-      if (files.has(fileName)) {
-        file = files.get(fileName);
+    {
+      var sourceMap = void 0;
+      var source = frame.getFileName();
+
+      if (!source) return frame;
+
+      if (cache.has(source)) {
+        sourceMap = cache.get(source);
       } else {
-        files.set(fileName, file = false);
+        sourceMap = findSourceMap(source);
+        cache.set(source, sourceMap);
+      }
+
+      if (sourceMap) {
+        var originalPosition = sourceMap.map.originalPositionFor({
+          source: source,
+          line: frame.lineNumber,
+          column: frame.columnNumber - 1
+        });
+
+        if (originalPosition.source !== null) {
+          frame.fileName = originalPosition.source;
+          frame.lineNumber = originalPosition.line;
+          frame.columnNumber = originalPosition.column + 1;
+
+          if (sourceMap.map.sourcesContent) {
+            var indexSourceContent = sourceMap.map.sources.indexOf(originalPosition.source);
+            if (indexSourceContent !== -1) {
+              file = {
+                fileName: originalPosition.source,
+                contents: sourceMap.map.sourcesContent[indexSourceContent]
+              };
+            }
+          }
+        }
       }
     }
 
-    line.file = file;
-    return line;
+    frame.file = file;
+    return frame;
   });
 });
 //# sourceMappingURL=parseErrorStack.js.map

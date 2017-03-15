@@ -91,10 +91,13 @@ var HtmlRenderer = function () {
         str += '</pre>';
       }
 
-      str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;padding:1px 2px;">Call Stack:</h5>\n';
-
       if (!this.options.production) {
+        str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;padding:1px 2px;">Stack:</h5>\n';
         str += '<pre style="background:#FFF;color:#222;border:0">' + this.renderStack(error) + '</pre>';
+        str += '<small><em>Click on the line number to display/hide the content file !</em></small>';
+
+        str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;padding:1px 2px;">Source Stack:</h5>\n';
+        str += '<pre style="background:#FFF;color:#222;border:0">' + (0, _escapeHtml2.default)(error.stack) + '</pre>';
       }
 
       return str;
@@ -110,28 +113,30 @@ var HtmlRenderer = function () {
       var _this = this;
 
       var frames = (0, _parseErrorStack2.default)(error);
-      console.log(frames);
 
       var str = '<style>.string{ color: #EC7600; }\n.keyword, .null{ font-weight: bold; color: #93C763; }\n.numeric{ color: #FACD22; }\n.line-comment{ color: #66747B; }\n.identifier{ }\n.control-flow{ color: #93C763; }\n.azerty1{ color: #66747B; }\n.azerty2{ color: #678CB1; }\n.azerty5{ color: #F1F2F3; }\n.azerty6{ color: #8AC763; }\n.azerty7{ color: #E0E2E4; }\n.azerty9{ color: purple; }\n</style>';
       frames.forEach(function (frame, i) {
         if (frame.file && frame.file.contents) {
-          str += '<span><a href="javascript:;" style="color:#CC7A00;text-decoration:none;outline:none;" '
+          str += '<span><a href="javascript:;" style="color:#CC7A00;text-decoration:none;outline:none;cursor:pointer" '
           // eslint-disable-next-line
           + 'onclick="var el=this.parentNode.nextElementSibling; el.style.display=el.style.display==\'none\'?\'block\':\'none\';">';
         }
 
         str += '#' + i + ' ';
         if (!frame.isNative && !frame.isEval) {
-          if (frame.fileName && frame.fileName.startsWith('/')) {
-            str += _this.openLocalFile(frame.fileName, frame.lineNumber, frame.columnNumber);
+          var fileName = frame.fileName;
+          if (fileName.startsWith('file://')) fileName = fileName.substr('file://'.length);
+
+          if (fileName && fileName.startsWith('/')) {
+            str += _this.openLocalFile(fileName, frame.lineNumber, frame.columnNumber);
           }
 
-          str += _this.replaceAppInFilePath(frame.fileName);
+          str += _this.replaceAppInFilePath(fileName);
           if (frame.lineNumber !== null || frame.columnNumber !== null) {
             str += ':' + frame.lineNumber + ':' + frame.columnNumber;
           }
 
-          if (frame.fileName && frame.fileName.startsWith('/')) {
+          if (fileName && fileName.startsWith('/')) {
             str += '</a>';
           }
 
@@ -154,7 +159,7 @@ var HtmlRenderer = function () {
 
         if (frame.file && frame.file.contents) {
           str += '</a></span>';
-          str += '<div style="display:none">';
+          str += '<div style="display:' + (i === 0 ? 'block' : 'none') + '">';
 
           str += '<div style="margin-top: 5px">';
           str += '<b>File content :</b><br />';
@@ -166,10 +171,6 @@ var HtmlRenderer = function () {
 
         str += '\n';
       });
-
-      str += '\n';
-      str += '\n';
-      str += error.stack;
 
       return str;
     }

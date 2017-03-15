@@ -14,30 +14,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (err) {
   var frames = _errorStackParser2.default.parse(err);
-  var files = new Map();
+  var cache = new Map();
 
-  return frames.map(function (line) {
-    var fileName = line.fileName;
+  return frames.map(function (frame) {
+    if (frame.isNative || frame.isEval) return frame;
+
+    var fileName = frame.fileName;
     var file = void 0;
 
     if (fileName && fileName.startsWith('/')) {
-      if (files.has(fileName)) {
-        file = files.get(fileName);
+      if (cache.has(fileName)) {
+        file = cache.get(fileName);
       } else {
         file = {};
         try {
           var fileContent = (0, _fs.readFileSync)(fileName).toString();
           file.fileName = fileName;
           file.contents = fileContent;
-          files.set(fileName, file);
+          cache.set(fileName, file);
         } catch (e) {
-          files.set(fileName, file = false);
+          cache.set(fileName, file = false);
         }
       }
     }
 
-    line.file = file;
-    return line;
+    frame.file = file;
+    return frame;
   });
 };
 //# sourceMappingURL=parseErrorStack.js.map
