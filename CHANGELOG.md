@@ -1,3 +1,7 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/christophehurpeau/error-html/compare/v0.2.1...v0.2.2) (2017-04-01)
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/christophehurpeau/error-html/compare/v0.2.0...v0.2.1) (2017-03-15)
 
