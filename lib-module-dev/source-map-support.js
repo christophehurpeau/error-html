@@ -7,9 +7,7 @@ export var findSourceMap = function findSourceMap(source) {
 
   t.param('source', _sourceType).assert(source);
 
-  console.log(source);
   var sourceMap = retrieveSourceMap(source);
-  console.log(sourceMap);
   if (!sourceMap) return sourceMap;
 
   var url = sourceMap.url,

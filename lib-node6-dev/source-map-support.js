@@ -20,9 +20,7 @@ const findSourceMap = exports.findSourceMap = source => {
 
   _flowRuntime2.default.param('source', _sourceType).assert(source);
 
-  console.log(source);
   const sourceMap = (0, _sourceMapSupport.retrieveSourceMap)(source);
-  console.log(sourceMap);
   if (!sourceMap) return sourceMap;
 
   const { url, map } = sourceMap;

@@ -30,7 +30,7 @@ function tag(tagName, attributes, content, contentEscape) {
   });
 
   return `<${tagName}${str}${content == null ? '/' : `>${contentEscape ? (0, _escapeHtml2.default)(content) : content}</${tagName}`}>`;
-} /* eslint-disable max-len, max-lines */
+} /* eslint-disable max-len, max-lines, prettier/prettier */
 
 let HtmlRenderer = class {
   constructor(options) {
@@ -68,20 +68,20 @@ let HtmlRenderer = class {
    */
   render(error) {
     let str = '<div style="text-align: left">';
-    str += `<h1>${error.name}</h1>\n`;
+    str += `<h1 style="background:#FFF;color:#E07308;border:0;font-size:4em;margin:0;padding:1px 2px;">${error.name}</h1>\n`;
     if (error.message) {
-      str += '<pre style="background:#FFF;color:#222;border:0;font-size:1em;white-space:pre-wrap;word-wrap:break-word">';
+      str += '<pre style="background:#FFF;color:#222;border:0;font-size:1em;margin:5px 0 0;padding: 0;white-space:pre-wrap;word-wrap:break-word">';
       str += (0, _escapeHtml2.default)(error.message);
       str += '</pre>';
     }
 
     if (!this.options.production) {
-      str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;padding:1px 2px;">Stack:</h5>\n';
-      str += `<pre style="background:#FFF;color:#222;border:0">${this.renderStack(error)}</pre>`;
+      str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;margin:10px 0 0;padding:1px 2px;">Stack:</h5>\n';
+      str += `<pre style="background:#FFF;color:#222;border:0;margin:0">${this.renderStack(error)}</pre>`;
       str += '<small><em>Click on the line number to display/hide the content file !</em></small>';
 
-      str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;padding:1px 2px;">Source Stack:</h5>\n';
-      str += `<pre style="background:#FFF;color:#222;border:0">${(0, _escapeHtml2.default)(error.stack)}</pre>`;
+      str += '<h5 style="background:#FFDDAA;color:#333;border:1px solid #E07308;margin:0;padding:1px 2px;">Source Stack:</h5>\n';
+      str += `<pre style="background:#FFF;color:#222;border:0;margin:0">${(0, _escapeHtml2.default)(error.stack)}</pre>`;
     }
 
     return str;

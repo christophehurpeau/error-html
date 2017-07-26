@@ -7,9 +7,7 @@ export const findSourceMap = function findSourceMap(source) {
 
   t.param('source', _sourceType).assert(source);
 
-  console.log(source);
   const sourceMap = retrieveSourceMap(source);
-  console.log(sourceMap);
   if (!sourceMap) return sourceMap;
 
   const { url, map } = sourceMap;

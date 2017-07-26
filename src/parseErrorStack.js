@@ -2,11 +2,11 @@ import { readFileSync } from 'fs';
 import errorStackParser from 'error-stack-parser';
 import { findSourceMap } from './source-map-support';
 
-export default (err) => {
+export default err => {
   const frames = errorStackParser.parse(err);
   const cache = new Map();
 
-  return frames.map((frame) => {
+  return frames.map(frame => {
     if (frame.isNative || frame.isEval) return frame;
 
     const fileName = frame.fileName;
@@ -59,7 +59,7 @@ export default (err) => {
           file.contents = fileContent;
           cache.set(fileName, file);
         } catch (e) {
-          cache.set(fileName, file = false);
+          cache.set(fileName, (file = false));
         }
       }
     }
