@@ -1,3 +1,12 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/christophehurpeau/error-html/compare/v0.2.2...v0.3.0) (2017-07-26)
+
+
+### Features
+
+* remove console.log and improve styling ([fca2e74](https://github.com/christophehurpeau/error-html/commit/fca2e74))
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/christophehurpeau/error-html/compare/v0.2.1...v0.2.2) (2017-04-01)
 
