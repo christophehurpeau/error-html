@@ -1,15 +1,10 @@
 import { SourceMapConsumer } from 'source-map';
 import { retrieveSourceMap } from 'source-map-support';
-import t from 'flow-runtime';
 import errorStackParser from 'error-stack-parser';
 import escape from 'escape-html';
 import highlight from 'eshighlight-fb';
 
 const findSourceMap = function findSourceMap(source) {
-  let _sourceType = t.string();
-
-  t.param('source', _sourceType).assert(source);
-
   const sourceMap = retrieveSourceMap(source);
   if (!sourceMap) return sourceMap;
 

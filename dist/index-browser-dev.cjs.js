@@ -4,16 +4,11 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var sourceMap = require('source-map');
 var sourceMapSupport = require('source-map-support');
-var t = _interopDefault(require('flow-runtime'));
 var errorStackParser = _interopDefault(require('error-stack-parser'));
 var escape = _interopDefault(require('escape-html'));
 var highlight = _interopDefault(require('eshighlight-fb'));
 
 var findSourceMap = function findSourceMap(source) {
-  var _sourceType = t.string();
-
-  t.param('source', _sourceType).assert(source);
-
   var sourceMap$$1 = sourceMapSupport.retrieveSourceMap(source);
   if (!sourceMap$$1) return sourceMap$$1;
 
