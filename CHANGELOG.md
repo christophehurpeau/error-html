@@ -1,3 +1,12 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/christophehurpeau/error-html/compare/v0.3.1...v0.3.2) (2018-03-04)
+
+
+### Bug Fixes
+
+* revert "source-map" to "^0.5.6" ([d161f34](https://github.com/christophehurpeau/error-html/commit/d161f34))
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/christophehurpeau/error-html/compare/v0.3.0...v0.3.1) (2018-03-04)
 
