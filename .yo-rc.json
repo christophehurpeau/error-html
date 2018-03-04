@@ -12,13 +12,42 @@
         "index"
       ],
       "envs": [
-        "node6",
-        "node8",
-        "older-node",
-        "module-modern-browsers",
-        "module",
-        "module-node8",
-        "browsers"
+        {
+          "target": "node",
+          "version": "8",
+          "formats": [
+            "cjs",
+            "es"
+          ]
+        },
+        {
+          "target": "node",
+          "version": "6",
+          "formats": [
+            "cjs"
+          ]
+        },
+        {
+          "target": "node",
+          "version": "4",
+          "formats": [
+            "cjs"
+          ]
+        },
+        {
+          "target": "browser",
+          "version": "modern",
+          "formats": [
+            "es"
+          ]
+        },
+        {
+          "target": "browser",
+          "formats": [
+            "cjs",
+            "es"
+          ]
+        }
       ],
       "documentation": {
         "doclets": false

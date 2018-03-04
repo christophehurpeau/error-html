@@ -1,0 +1,10 @@
+{
+  "env": {
+    "doc": {
+      "only": ["src/"],
+      "presets": [
+        ["pob-babel/jsdoc-preset", { "flow": false }]
+      ]
+    }
+  }
+}
