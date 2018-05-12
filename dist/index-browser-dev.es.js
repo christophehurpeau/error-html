@@ -151,7 +151,7 @@ var HtmlRenderer = function () {
     }
 
     /**
-     * @ignore
+     * @param {Error} error
      */
 
   }, {

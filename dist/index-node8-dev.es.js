@@ -81,7 +81,7 @@ let HtmlRenderer = class {
   }
 
   /**
-   * @ignore
+   * @param {Error} error
    */
   render(error) {
     let str = '<div style="text-align: left">';
@@ -108,7 +108,7 @@ let HtmlRenderer = class {
    * @ignore
    */
   renderStack(error) {
-    let frames = parseErrorStack(error);
+    const frames = parseErrorStack(error);
 
     let str = `<style>.string{ color: #EC7600; }
 .keyword, .null{ font-weight: bold; color: #93C763; }
@@ -187,8 +187,8 @@ let HtmlRenderer = class {
    * @ignore
    */
   highlightLine(contents, lineNumber /* , columnNumber */) {
-    let withLineNumbers = true;
-    let minmax = 4;
+    const withLineNumbers = true;
+    const minmax = 4;
 
     let hcontents;
     try {
@@ -199,7 +199,7 @@ let HtmlRenderer = class {
 
     hcontents = hcontents.split(/\r\n|\n\r|\n|\r/);
 
-    let ok = lineNumber <= hcontents.length;
+    const ok = lineNumber <= hcontents.length;
     let firstLine;
     let start;
     let lineContent;

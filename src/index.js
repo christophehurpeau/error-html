@@ -51,7 +51,7 @@ export default class HtmlRenderer {
   }
 
   /**
-   * @ignore
+   * @param {Error} error
    */
   render(error) {
     let str = '<div style="text-align: left">';
@@ -78,7 +78,7 @@ export default class HtmlRenderer {
    * @ignore
    */
   renderStack(error) {
-    let frames = parseErrorStack(error);
+    const frames = parseErrorStack(error);
 
     let str = `<style>.string{ color: #EC7600; }
 .keyword, .null{ font-weight: bold; color: #93C763; }
@@ -157,9 +157,9 @@ export default class HtmlRenderer {
    * @ignore
    */
   highlightLine(contents, lineNumber /* , columnNumber */) {
-    let style = 'background:#3F1F1F;';
-    let withLineNumbers = true;
-    let minmax = 4;
+    const style = 'background:#3F1F1F;';
+    const withLineNumbers = true;
+    const minmax = 4;
 
     let hcontents;
     try {
@@ -170,7 +170,7 @@ export default class HtmlRenderer {
 
     hcontents = hcontents.split(/\r\n|\n\r|\n|\r/);
 
-    let ok = lineNumber <= hcontents.length;
+    const ok = lineNumber <= hcontents.length;
     let firstLine;
     let start;
     let lineContent;
@@ -191,12 +191,12 @@ export default class HtmlRenderer {
 
     let content = this.lines(withLineNumbers, ok ? firstLine + 1 : 1, start);
     if (ok) {
-      let attributes = { style };
+      const attributes = { style };
       content += this.line(withLineNumbers, lineNumber, attributes, lineContent);
       content += this.lines(withLineNumbers, lineNumber + 1, end);
     }
 
-    let preAttrs = { style: 'background:#0F0F0F;color:#E0E2E4;border:0;padding:0;position:relative;' };
+    const preAttrs = { style: 'background:#0F0F0F;color:#E0E2E4;border:0;padding:0;position:relative;' };
     return tag('pre', preAttrs, content, false);
   }
 
