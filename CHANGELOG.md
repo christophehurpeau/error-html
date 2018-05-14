@@ -1,3 +1,12 @@
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/christophehurpeau/error-html/compare/v0.3.4...v0.3.5) (2018-05-14)
+
+
+### Bug Fixes
+
+* options.appPath and add missing options in typings ([6bf5f30](https://github.com/christophehurpeau/error-html/commit/6bf5f30))
+
+
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/christophehurpeau/error-html/compare/v0.3.3...v0.3.4) (2018-05-12)
 
