@@ -77,8 +77,8 @@ let HtmlRenderer = class {
   replaceAppInFilePath(filePath) {
     if (!filePath) return 'unknown';
 
-    if (this.appPath) {
-      filePath = `APP/${filePath.substr(this.appPath.length)}`;
+    if (this.options.appPath) {
+      filePath = `APP/${filePath.substr(this.options.appPath.length)}`;
     }
 
     return filePath;
