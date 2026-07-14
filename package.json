@@ -23,7 +23,7 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./dist/definitions/index.d.ts",
+      "types": "./dist/definitions/src/index.d.ts",
       "node": {
         "import": "./dist/index-node22.mjs"
       }
