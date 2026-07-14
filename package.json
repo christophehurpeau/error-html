@@ -3,84 +3,88 @@
   "version": "0.3.5",
   "description": "render error stack in html",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
-  "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/error-html.git",
   "homepage": "https://github.com/christophehurpeau/error-html",
-  "engines": {
-    "node": ">=4.0.0"
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/error-html/issues"
   },
-  "main": "./index.js",
-  "typings": "./index.d.ts",
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": "https://github.com/christophehurpeau/error-html.git",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index-node22.mjs",
   "module": "./dist/index-browser.es.js",
-  "module-dev": "./dist/index-browser-dev.es.js",
-  "browser": "./dist/index.cjs.js",
-  "browser-dev": "./dist/index-dev.cjs.js",
-  "module:node": "./dist/index-node8.es.js",
-  "module:node-dev": "./dist/index-node8-dev.es.js",
-  "module:browser": "./dist/index-browser.es.js",
-  "module:browser-dev": "./dist/index-browser-dev.es.js",
-  "module:modern-browsers": "./dist/index-browsermodern.es.js",
-  "module:modern-browsers-dev": "./dist/index-browsermodern-dev.es.js",
+  "browser": "./dist/index-browser.es.js",
+  "types": "./dist/definitions/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/definitions/index.d.ts",
+      "node": {
+        "import": "./dist/index-node22.mjs"
+      }
+    }
+  },
   "scripts": {
-    "build": "pob-build",
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs && pnpm run build:definitions",
+    "build:definitions": "tsc -p tsconfig.json",
+    "checks": "node scripts/check-package.ts",
     "clean": "rm -Rf docs dist",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
-    "flow": "flow",
-    "generate:api": "pob-build-doc",
-    "generate:docs": "yarn run generate:api",
-    "lint": "eslint src/",
-    "postcheckout": "yarnhook",
-    "postmerge": "yarnhook",
-    "postrewrite": "yarnhook",
-    "precommit": "lint-staged",
-    "preversion": "yarn run lint && yarn run build && pob-repository-check-clean",
-    "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version",
+    "clean:build": "pob-esbuild-clean-out dist",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check .",
+    "generate:api": "typedoc --tsconfig tsconfig.doc.json",
+    "lint": "pnpm run format && tsc && pnpm run lint:eslint",
+    "lint:eslint": "eslint --quiet .",
+    "prepare": "pob-root-postinstall",
+    "preview": "node scripts/preview.ts",
+    "test": "TZ=UTC node --test 'src/**/*.test.ts'",
+    "test:coverage": "TZ=UTC npx c8 --all --src ./src node --test 'src/**/*.test.ts'",
+    "test:coverage:generate": "TZ=UTC npx c8 --reporter=json --all --src ./src node --test 'src/**/*.test.ts'",
+    "test:e2e": "playwright test -c e2e/playwright.config.ts",
+    "test:watch": "TZ=UTC node --test 'src/**/*.test.ts'",
+    "tsc": "tsc",
     "watch": "pob-watch"
   },
-  "lint-staged": {
-    "{README.md,package.json,.eslintrc.json}": ["prettier --write", "git add"],
-    "src/**/*.json": ["prettier --write", "git add"],
-    "src/**/*.js": ["eslint --fix --quiet", "git add"]
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "printWidth": 100
-  },
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
-  },
   "dependencies": {
-    "error-stack-parser": "^2.0.1",
-    "escape-html": "^1.0.3",
-    "eshighlight-fb": "^1.0.0",
-    "source-map": "^0.5.6",
-    "source-map-support": "^0.5.3"
+    "errorstacks": "^2.4.2",
+    "escape-goat": "^4.0.0",
+    "highlight.js": "^11.11.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^6.1.3",
-    "@commitlint/config-conventional": "^6.1.3",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-latest-node": "^1.0.0",
-    "babel-preset-modern-browsers": "^10.0.1",
-    "eslint": "4.13.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-pob": "^17.1.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "husky": "^0.14.3",
-    "jsdoc": "^3.5.5",
-    "lint-staged": "^7.1.0",
-    "minami": "^1.2.3",
-    "pob-babel": "^19.1.4",
-    "pob-release": "^3.1.0",
-    "prettier": "^1.11.1",
-    "yarnhook": "^0.1.1"
+    "@playwright/test": "1.61.1",
+    "@pob/eslint-config": "65.5.0",
+    "@pob/rollup-esbuild": "9.1.2",
+    "@pob/root": "24.5.0",
+    "@types/node": "26.1.1",
+    "check-package-dependencies": "11.1.1",
+    "eslint": "10.4.0",
+    "typedoc": "0.28.19",
+    "typescript": "6.0.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@pob/root/commitlint-config"
+    ]
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {
+    "bundler": "rollup-esbuild",
+    "entries": [
+      "index"
+    ],
+    "envs": [
+      {
+        "target": "node",
+        "version": "22"
+      }
+    ],
+    "typescript": true
   }
 }

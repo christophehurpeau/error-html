@@ -1,0 +1,73 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Dry run"
+        required: true
+        type: boolean
+        default: false
+      allow-no-tags:
+        description: "Allow no tags"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ssh-key: ${{ secrets.PUSH_DEPLOY_KEY }}
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11.11.0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Check git tags
+        if: github.ref == 'refs/heads/main' && !inputs.allow-no-tags
+        run: |
+          tags=$(git tag)
+          if [ -z "$tags" ]; then
+            echo "No git tags found"
+            exit 1
+          fi
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: New version (dry run)
+        if: github.ref == 'refs/heads/main' && inputs.dry-run
+        run: pnpm exec pob-version --dry-run
+
+      - name: Configure Git user
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: New version
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        run: |
+          pnpm exec pob-version --create-release=github  -m 'chore: release %v [skip ci]'
+        env:
+          POB_GIT_HOOKS: 0
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        run: |
+          pnpm publish --no-git-checks

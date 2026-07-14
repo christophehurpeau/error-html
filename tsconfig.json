@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "@pob/root/tsconfigs/strict.json",
+    "@pob/root/tsconfigs/targets/rollup-es2015-with-dom.json"
+  ],
+  "include": ["src/**/*.ts", "scripts/**/*.ts"],
+  "compilerOptions": {
+    "rootDirs": ["src", "scripts"],
+    "outDir": "dist/definitions",
+    "noEmitOnError": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true
+  }
+}

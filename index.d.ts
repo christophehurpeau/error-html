@@ -1,6 +1,6 @@
 declare module "error-html" {
   export interface Options {
-    fileProtocol?: 'file';
+    fileProtocol?: "file";
     production?: boolean;
     appPath?: string;
   }

@@ -1,0 +1,30 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // set pnpm as package manager to run scripts and tasks
+  "npm.packageManager": "pnpm",
+
+  // save config
+  "editor.formatOnSave": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "never"
+  },
+
+  // extension eslint config
+  "eslint.workingDirectories": ["."],
+  "eslint.useFlatConfig": true,
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // format config
+  "eslint.format.enable": false,
+  "editor.defaultFormatter": "oxc.oxc-vscode"
+}
