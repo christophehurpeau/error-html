@@ -1,3 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.0](https://github.com/christophehurpeau/error-html/compare/v0.3.5...v0.4.0) (2026-07-14)
+
+### ⚠ BREAKING CHANGES
+
+* use newer dependencies, drop browser support, require node 22
+
+### Features
+
+* use newer dependencies, drop browser support, require node 22
+
 <a name="0.3.5"></a>
 ## [0.3.5](https://github.com/christophehurpeau/error-html/compare/v0.3.4...v0.3.5) (2018-05-14)
 
