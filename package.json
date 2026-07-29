@@ -55,7 +55,7 @@
   "devDependencies": {
     "@playwright/test": "1.61.1",
     "@pob/rollup-esbuild": "10.0.0",
-    "@pob/root": "27.1.0",
+    "@pob/root": "27.2.1",
     "@types/node": "26.1.1",
     "@typescript/native": "npm:typescript@7.0.2",
     "eslint": "10.8.0",

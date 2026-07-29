@@ -25,8 +25,8 @@ importers:
         specifier: 10.0.0
         version: 10.0.0(@typescript/typescript6@6.0.2)(rollup@4.60.4)
       '@pob/root':
-        specifier: 27.1.0
-        version: 27.1.0(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)
+        specifier: 27.2.1
+        version: 27.2.1(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       '@types/node':
         specifier: 26.1.1
         version: 26.1.1
@@ -468,22 +468,22 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@pob/eslint-config@67.1.0':
-    resolution: {integrity: sha512-bdjxQ+xi11zbj/Z5d6gv76hOhJGTs2yuwX81cU5k66qJDxp1ULnqC6hfHIWNghmewn9ViFPDuP+h4ZF3uA8K9A==}
+  '@pob/eslint-config@67.1.1':
+    resolution: {integrity: sha512-RZhyyf69Flw3Z0msAXze9/h4zQu3LERbo44nFYfr60iZRQ622QGKuVvhdAz/DtPly3OXJXV3fBeMYCkGoxXXGg==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^10.6.0
-      typescript: '>=5.0.0 <7.0.0'
+      typescript: '>=5.0.0 <8.0.0'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@pob/eslint-plugin@66.1.0':
-    resolution: {integrity: sha512-djaBe6l+mOm3oXeSu15aVGhq+hYaqW2TTwFhYF12YC3ltVGHz0JPZdDlAI8P7JAtT98CzapCQfaZndGdXZtwjA==}
+  '@pob/eslint-plugin@66.1.1':
+    resolution: {integrity: sha512-u4089ISgG6nnebnzPN3CgawdtTnL59h5OdWT0B+AqSIDLlysZOEcOxAyHDxa2HKXZ/xbTyxv0iMuduNV/3+8Bg==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^10.0.2
-      typescript: '>=5.0.0 <7.0.0'
+      typescript: '>=5.0.0 <8.0.0'
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -504,8 +504,8 @@ packages:
     engines: {node: '>=22.18.0'}
     hasBin: true
 
-  '@pob/root@27.1.0':
-    resolution: {integrity: sha512-XICvyF8uKlJxkZYPOJpNrgWpyL9TTxOxRT0nToQjZw9du9oXRD+GojqZHC9++3Qx75LMj4aAMLaOUJeWOay2tw==}
+  '@pob/root@27.2.1':
+    resolution: {integrity: sha512-2i+TJUAXm9LMIDkwyNd11n2rI/zVEREzUl2wo+qdM+kkJBYviGLC/3HXpjD01XsNWAH3l112ppdlUG0gUIN5ig==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
@@ -1956,8 +1956,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pob-dependencies@27.1.0:
-    resolution: {integrity: sha512-mGCSwTzkLtYaG5MisUMUfez8EmtLC0FSqPEwg2Cxqmx8s5HetjjXkti8Ehm/Xbe5AYrpNRZF1gGa3N71y5ifRw==}
+  pob-dependencies@27.1.1:
+    resolution: {integrity: sha512-tv+1jATlUJ/DziMxMhNBi5jAOV0GQXokprJdkJUyh0XLx+5qfrkQW+JnoY4F4dnbthoNr1AzO2oqIneDYddrhQ==}
     engines: {node: '>=22.18.0'}
 
   possible-typed-array-names@1.1.0:
@@ -2583,11 +2583,11 @@ snapshots:
     dependencies:
       playwright: 1.61.1
 
-  '@pob/eslint-config@67.1.0(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
+  '@pob/eslint-config@67.1.1(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.8.0)
       '@eslint/json': 1.2.0
-      '@pob/eslint-plugin': 66.1.0(@typescript/typescript6@6.0.2)(eslint@10.8.0)
+      '@pob/eslint-plugin': 66.1.1(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       '@typescript-eslint/eslint-plugin': 8.63.0(@typescript-eslint/parser@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       '@typescript-eslint/parser': 8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       check-package-dependencies: 12.1.0(eslint@10.8.0)
@@ -2605,7 +2605,7 @@ snapshots:
       - eslint-import-resolver-node
       - supports-color
 
-  '@pob/eslint-plugin@66.1.0(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
+  '@pob/eslint-plugin@66.1.1(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
     dependencies:
       '@typescript-eslint/utils': 8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       eslint: 10.8.0
@@ -2634,12 +2634,12 @@ snapshots:
     dependencies:
       rollup: 4.60.4
 
-  '@pob/root@27.1.0(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
+  '@pob/root@27.2.1(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)':
     dependencies:
       '@commitlint/format': 21.0.1
       '@commitlint/lint': 21.0.2
       '@commitlint/types': 21.0.1
-      '@pob/eslint-config': 67.1.0(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)
+      '@pob/eslint-config': 67.1.1(@typescript-eslint/utils@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0))(@typescript/typescript6@6.0.2)(eslint@10.8.0)
       '@pob/version': 6.0.0
       conventional-changelog-conventionalcommits: 9.3.1
       conventional-changelog-writer: 8.4.0
@@ -2648,7 +2648,7 @@ snapshots:
       lint-staged: 17.2.0
       oxfmt: 0.54.0
       picomatch: 4.0.5
-      pob-dependencies: 27.1.0
+      pob-dependencies: 27.1.1
       semver: 7.8.5
     optionalDependencies:
       eslint: 10.8.0
@@ -4140,7 +4140,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pob-dependencies@27.1.0: {}
+  pob-dependencies@27.1.1: {}
 
   possible-typed-array-names@1.1.0: {}
 

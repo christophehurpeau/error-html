@@ -1,5 +1,6 @@
-import { writeFileSync } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
+import { format } from "@pob/root/oxfmt";
 import { createErrorHtmlRenderer } from "../src/index.ts";
 
 const sample = `import { readFile } from "node:fs/promises";
@@ -63,5 +64,10 @@ ${withErrorLine}
 }
 
 const outputPath = path.join(process.cwd(), "syntax-preview.html");
-writeFileSync(outputPath, buildPage());
+const { code: content, errors } = await format(outputPath, buildPage());
+if (errors.length > 0) {
+  console.error("Error formatting preview HTML:", errors);
+  process.exit(1);
+}
+fs.writeFileSync(outputPath, content, "utf8");
 process.stdout.write(`Preview written to ${outputPath}\n`);
