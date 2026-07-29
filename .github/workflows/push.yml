@@ -17,10 +17,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 11.11.0
+          version: 11
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
@@ -63,6 +63,6 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/coverage-final.json
+          files: ./docs/coverage.lcov
           disable_search: true
         if: startsWith(matrix.node-version, '24.') && github.actor != 'dependabot[bot]'

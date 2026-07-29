@@ -18,7 +18,6 @@
     "lib": {
       "documentation": true,
       "testing": {
-        "ci": true,
         "codecov": true,
         "runner": "node"
       }
