@@ -53,7 +53,7 @@
     "highlight.js": "^11.11.1"
   },
   "devDependencies": {
-    "@playwright/test": "1.61.1",
+    "@playwright/test": "1.62.1",
     "@pob/rollup-esbuild": "10.0.0",
     "@pob/root": "27.2.1",
     "@types/node": "26.1.1",
