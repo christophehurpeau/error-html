@@ -63,6 +63,10 @@ jobs:
           disable_search: true
         if: startsWith(matrix.node-version, '24.') && github.actor != 'dependabot[bot]'
 
+      - name: E2E testing prepare
+        run: pnpm run test:e2e:prepare
+        if: startsWith(matrix.node-version, '24.')
+
       - name: E2E testing
         run: pnpm run test:e2e
         if: startsWith(matrix.node-version, '24.')

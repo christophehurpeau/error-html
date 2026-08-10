@@ -42,7 +42,8 @@
     "test": "TZ=UTC node --test 'src/**/*.test.ts'",
     "test:coverage": "TZ=UTC node --test --experimental-test-coverage --test-coverage-include=\"src/**/*.ts\" 'src/**/*.test.ts'",
     "test:coverage:generate": "mkdir -p docs && TZ=UTC node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov --test-coverage-include=\"src/**/*.ts\" 'src/**/*.test.ts'",
-    "test:e2e": "playwright test -c e2e/playwright.config.ts",
+    "test:e2e": "playwright test",
+    "test:e2e:prepare": "playwright install chromium",
     "test:watch": "TZ=UTC node --test 'src/**/*.test.ts'",
     "tsc": "tsc && tsc -p tsconfig.tools.json",
     "watch": "pob-watch"
