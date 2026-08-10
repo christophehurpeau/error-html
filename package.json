@@ -44,7 +44,7 @@
     "test:coverage:generate": "mkdir -p docs && TZ=UTC node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov --test-coverage-include=\"src/**/*.ts\" 'src/**/*.test.ts'",
     "test:e2e": "playwright test -c e2e/playwright.config.ts",
     "test:watch": "TZ=UTC node --test 'src/**/*.test.ts'",
-    "tsc": "tsc",
+    "tsc": "tsc && tsc -p tsconfig.tools.json",
     "watch": "pob-watch"
   },
   "dependencies": {
@@ -54,11 +54,13 @@
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
+    "@pob/eslint-config": "67.2.0",
     "@pob/rollup-esbuild": "10.0.0",
     "@pob/root": "27.3.0",
     "@types/node": "26.1.1",
     "@typescript/native": "npm:typescript@7.0.2",
     "eslint": "10.8.0",
+    "playwright": "1.62.1",
     "typedoc": "0.28.20",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },

@@ -28,10 +28,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Checks
-        run: pnpm run checks
-        if: startsWith(matrix.node-version, '24.')
-
       - name: Build
         run: pnpm run build
         if: startsWith(matrix.node-version, '24.')
@@ -66,3 +62,7 @@ jobs:
           files: ./docs/coverage.lcov
           disable_search: true
         if: startsWith(matrix.node-version, '24.') && github.actor != 'dependabot[bot]'
+
+      - name: E2E testing
+        run: pnpm run test:e2e
+        if: startsWith(matrix.node-version, '24.')

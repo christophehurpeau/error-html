@@ -20,7 +20,8 @@
       "testing": {
         "codecov": true,
         "runner": "node"
-      }
+      },
+      "e2e": true
     }
   }
 }
