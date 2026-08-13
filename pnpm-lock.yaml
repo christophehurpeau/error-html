@@ -22,8 +22,8 @@ importers:
         specifier: 1.62.1
         version: 1.62.1
       '@pob/eslint-config':
-        specifier: 67.2.0
-        version: 67.2.0(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(@typescript/typescript6@6.0.2)(eslint@10.8.1)
+        specifier: 67.4.0
+        version: 67.4.0(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(@typescript/typescript6@6.0.2)(eslint@10.8.1)
       '@pob/rollup-esbuild':
         specifier: 10.0.0
         version: 10.0.0(@typescript/typescript6@6.0.2)(rollup@4.60.4)
@@ -475,18 +475,18 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@pob/eslint-config@67.2.0':
-    resolution: {integrity: sha512-UOG+jSuF3fXvjQeCmtyxsQbPC2HMlor9wdnS4MTtE3yMbwZpttTBIt/9cCaNSBxsrFx6y/DD39jAkjYTaI0qjg==}
+  '@pob/eslint-config@67.4.0':
+    resolution: {integrity: sha512-1TEWFtqZv0mD8o+dDmYWuUvd/G8oxlX+0/oyhh6R6lPaaEJ0WxgSthBF+Slv1v5TDal2GMSy2FfYeu0/9cFa5g==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
-      eslint: ^10.6.0
+      eslint: ^10.8.0
       typescript: '>=5.0.0 <8.0.0'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  '@pob/eslint-plugin@66.1.1':
-    resolution: {integrity: sha512-u4089ISgG6nnebnzPN3CgawdtTnL59h5OdWT0B+AqSIDLlysZOEcOxAyHDxa2HKXZ/xbTyxv0iMuduNV/3+8Bg==}
+  '@pob/eslint-plugin@66.1.2':
+    resolution: {integrity: sha512-9H2+fnel9Z+J7mXF0fsLtcnB2gdgBK3bAlynjikpVQqY/4JJsVXWNJxV37RnqqSTBMrGRwsUzpeMpbad4J06Tw==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^10.0.2
@@ -1219,12 +1219,12 @@ packages:
   change-case@5.4.4:
     resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
 
-  check-package-dependencies@12.2.0:
-    resolution: {integrity: sha512-hOM5jG/PnqbVt9r9+LYWGC+3YoO+Bm+Yuok4uaocYNWmPvvlU7ZziifE3nCkxlKf2PpbyAl5Lha8BBXJ05YTLA==}
+  check-package-dependencies@13.0.0:
+    resolution: {integrity: sha512-kK0GBeT/pCrIqKfPkYAi2krb52peTcCTRoCOkNUeVg135aWh9palKydD4He/TrbixZxcnXah9H3pjl4lQy624w==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
-      eslint: ^10.6.0
+      eslint: ^10.8.0
     peerDependenciesMeta:
       eslint:
         optional: true
@@ -2645,14 +2645,14 @@ snapshots:
     dependencies:
       playwright: 1.62.1
 
-  '@pob/eslint-config@67.2.0(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(@typescript/typescript6@6.0.2)(eslint@10.8.1)':
+  '@pob/eslint-config@67.4.0(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(@typescript/typescript6@6.0.2)(eslint@10.8.1)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.8.1)
       '@eslint/json': 1.2.0
-      '@pob/eslint-plugin': 66.1.1(@typescript/typescript6@6.0.2)(eslint@10.8.1)
+      '@pob/eslint-plugin': 66.1.2(@typescript/typescript6@6.0.2)(eslint@10.8.1)
       '@typescript-eslint/eslint-plugin': 8.63.0(@typescript-eslint/parser@8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(@typescript/typescript6@6.0.2)(eslint@10.8.1)
       '@typescript-eslint/parser': 8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.1)
-      check-package-dependencies: 12.2.0(eslint@10.8.1)
+      check-package-dependencies: 13.0.0(eslint@10.8.1)
       confusing-browser-globals: 1.0.11
       eslint: 10.8.1
       eslint-plugin-import-x: 4.17.1(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.8.1))(eslint@10.8.1)
@@ -2667,7 +2667,7 @@ snapshots:
       - eslint-import-resolver-node
       - supports-color
 
-  '@pob/eslint-plugin@66.1.1(@typescript/typescript6@6.0.2)(eslint@10.8.1)':
+  '@pob/eslint-plugin@66.1.2(@typescript/typescript6@6.0.2)(eslint@10.8.1)':
     dependencies:
       '@typescript-eslint/utils': 8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.1)
       eslint: 10.8.1
@@ -3328,7 +3328,7 @@ snapshots:
 
   change-case@5.4.4: {}
 
-  check-package-dependencies@12.2.0(eslint@10.8.1):
+  check-package-dependencies@13.0.0(eslint@10.8.1):
     dependencies:
       '@eslint/plugin-kit': 0.7.2
       jsonc-parser: 3.3.1
