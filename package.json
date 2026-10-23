@@ -29,13 +29,13 @@
   },
   "scripts": {
     "build": "pnpm run clean:build && rollup --config rollup.config.mjs && pnpm run build:definitions",
-    "build:definitions": "tsc -p tsconfig.json",
+    "build:definitions": "tsrs -p tsconfig.json",
     "clean": "rm -Rf docs dist",
     "clean:build": "pob-esbuild-clean-out dist",
     "format": "oxfmt",
     "format:check": "oxfmt --check .",
     "generate:api": "typedoc --tsconfig tsconfig.doc.json",
-    "lint": "pnpm run format && pnpm run lint:oxlint && tsc && pnpm run lint:eslint",
+    "lint": "pnpm run format && pnpm run lint:oxlint && tsrs && pnpm run lint:eslint",
     "lint:eslint": "eslint --quiet .",
     "lint:oxlint": "oxlint --quiet",
     "prepare": "pob-root-postinstall",
@@ -46,7 +46,8 @@
     "test:e2e": "playwright test -c e2e/playwright.config.ts",
     "test:e2e:prepare": "playwright install chromium",
     "test:watch": "TZ=UTC node --test 'src/**/*.test.ts'",
-    "tsc": "tsc && tsc -p tsconfig.tools.json",
+    "tsc": "tsrs && tsrs -p tsconfig.tools.json",
+    "tsc:go": "tsc && tsc -p tsconfig.tools.json",
     "watch": "pob-watch"
   },
   "dependencies": {
@@ -55,14 +56,15 @@
     "highlight.js": "^11.12.0"
   },
   "devDependencies": {
-    "@playwright/test": "1.64.0",
+    "@playwright/test": "1.64.1",
     "@pob/eslint-config": "68.0.0",
-    "@pob/rollup-esbuild": "11.0.0",
-    "@pob/root": "28.0.0",
+    "@pob/rollup-esbuild": "11.1.0",
+    "@pob/root": "28.2.0",
     "@types/node": "26.1.1",
     "@typescript/native": "npm:typescript@7.0.2",
     "eslint": "10.12.0",
-    "playwright": "1.64.0",
+    "playwright": "1.64.1",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typedoc": "0.28.20",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
