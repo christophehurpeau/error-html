@@ -25,8 +25,8 @@ importers:
         specifier: 68.0.0
         version: 68.0.0(@typescript-eslint/utils@8.66.0(@typescript/typescript6@6.0.2)(eslint@10.12.0))(@typescript/typescript6@6.0.2)(eslint@10.12.0)
       '@pob/rollup-esbuild':
-        specifier: 11.0.0
-        version: 11.0.0(@typescript/typescript6@6.0.2)
+        specifier: 11.1.0
+        version: 11.1.0(@typescript/typescript6@6.0.2)
       '@pob/root':
         specifier: 28.0.0
         version: 28.0.0
@@ -645,15 +645,19 @@ packages:
       typescript:
         optional: true
 
-  '@pob/rollup-esbuild@11.0.0':
-    resolution: {integrity: sha512-SJrjvaXxuuAeGrjH5rLzIeRWWDVwT/28xei57OxhSXAqpKGhqUAr7EVb0ocuiood8X4ht1ebuZ824IlvKhjHzA==}
+  '@pob/rollup-esbuild@11.1.0':
+    resolution: {integrity: sha512-pPZRQlW8nSwHqwp4jARVYeuJBWb02V/vUqN0gJldAE8j/4pdtDeKn+i5vPCRjbnj1MdS4pEGgZAnAuSdgj/UgA==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
+      rollup: 4.60.4
       typescript: ^4.0.3 || ^5.0.0 || ^6.0.0 || ^7.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
 
-  '@pob/rollup@8.3.0':
-    resolution: {integrity: sha512-EkIcxwnlrsYgDIJnDN8rW3m8Mp+oPaXCky+dNy/n0TP2rbVy37E5PP7FMh15/t3nSwQDpVn3EQev9k+vdUMGmw==}
+  '@pob/rollup@8.4.0':
+    resolution: {integrity: sha512-o7wjgNK4tUFklJ/dRnSBB+Qsl/htOy3kvCdrOgGZQrvi9JOYXBIZlWgheLBlcV4Ks8fIcv9Pzr0pH95ig0plAQ==}
     engines: {node: '>=22.18.0'}
     hasBin: true
 
@@ -2360,9 +2364,9 @@ snapshots:
     optionalDependencies:
       typescript: '@typescript/typescript6@6.0.2'
 
-  '@pob/rollup-esbuild@11.0.0(@typescript/typescript6@6.0.2)':
+  '@pob/rollup-esbuild@11.1.0(@typescript/typescript6@6.0.2)':
     dependencies:
-      '@pob/rollup': 8.3.0
+      '@pob/rollup': 8.4.0
       '@rollup/plugin-node-resolve': 16.0.3(rollup@4.60.4)
       '@rollup/plugin-replace': 6.0.3(rollup@4.60.4)
       '@rollup/plugin-run': 3.1.0(rollup@4.60.4)
@@ -2374,7 +2378,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@pob/rollup@8.3.0':
+  '@pob/rollup@8.4.0':
     dependencies:
       rollup: 4.60.4
 
