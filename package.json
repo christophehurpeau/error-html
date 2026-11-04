@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
-    "@pob/eslint-config": "68.3.0",
+    "@pob/eslint-config": "68.4.0",
     "@pob/rollup-esbuild": "11.4.0",
     "@pob/root": "28.6.0",
     "@types/node": "26.1.1",
