@@ -59,7 +59,7 @@
     "@playwright/test": "1.65.0",
     "@pob/eslint-config": "68.5.0",
     "@pob/rollup-esbuild": "11.5.0",
-    "@pob/root": "28.8.0",
+    "@pob/root": "28.8.1",
     "@types/node": "26.1.1",
     "@typescript/native": "npm:typescript@7.0.2",
     "eslint": "10.14.0",
